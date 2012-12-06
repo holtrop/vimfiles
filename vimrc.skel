@@ -1,0 +1,6 @@
+" This file can be copied to the machine-specific vimrc location if needed
+
+" Load common configuration
+source $HOME/vimfiles/vimrc
+
+" Machine-specific settings can be added here

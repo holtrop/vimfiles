@@ -37,6 +37,7 @@ set nowritebackup
 set noswapfile
 set wildmode=longest,list,full
 set splitright
+set showcmd
 
 " GUI settings
 set background=dark

@@ -66,22 +66,22 @@ if has("win32") || has("win64")
 endif
 
 " mappings
-map ,# :set pasteO75A#yypO#73A A#0ll:set nopasteR
-map ,p :set pasteo#73A A#0ll:set nopasteR
-map ,* :set pasteO/74A*o 73A*A/O * :set nopasteA
-map ,; :set pasteO;74A*o;*72A A*o;74A*0klll:set nopasteR
-map ,8 :set pasteo20A-A8<20A-:set nopaste0
-map ,m mz:%s///g:noh`z
-map ,t :tabn
-map ,T :tabp
-map ,s mz:%s/\v\s+$//`z
-map ,f :set ts=8:retab:set ts=4
+map ,# :set paste<CR>O<Esc>75A#<Esc>yypO#<Esc>73A <Esc>A#<Esc>0ll:set nopaste<CR>R
+map ,p :set paste<CR>o#<Esc>73A <Esc>A#<Esc>0ll:set nopaste<CR>R
+map ,* :set paste<CR>O/<Esc>74A*<Esc>o <Esc>73A*<Esc>A/<Esc>O * <Esc>:set nopaste<CR>A
+map ,; :set paste<CR>O;<Esc>74A*<Esc>o;*<Esc>72A <Esc>A*<Esc>o;<Esc>74A*<Esc>0klll:set nopaste<CR>R
+map ,8 :set paste<CR>o<Esc>20A-<Esc>A8<<Esc>20A-<Esc>:set nopaste<CR>0
+map ,m mz:%s/<C-Q><CR>//g<CR>:noh<CR>`z
+map ,t :tabn<CR>
+map ,T :tabp<CR>
+map ,s mz:%s/\v\s+$//<CR>`z
+map ,f :set ts=8<CR>:retab<CR>:set ts=4<CR>
 " jump to tag in a new tab
-map ,w :tab :tag 
+map ,w :tab :tag <C-R><C-W><CR>
 " re-indent the following line how vim would automatically do it
-map ,j Ji
-map  :cn
-map  :cp
+map ,j Ji<CR><Esc>
+map <C-N> :cn<CR>
+map <C-P> :cp<CR>
 
 if has("autocmd")
   autocmd FileType text setlocal noautoindent

@@ -91,7 +91,7 @@ if has("autocmd")
   autocmd BufRead,BufNewFile *.dxl set filetype=dxl
   autocmd FileType dxl setlocal syntax=cpp
   " install glsl.vim in ~/.vim/syntax to use syntax highlighting for GLSL:
-  au BufNewFile,BufWinEnter *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
+  autocmd BufRead,BufNewFile *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
   autocmd Syntax {cpp,c,idl} runtime syntax/doxygen.vim
   autocmd QuickFixCmdPre grep copen
   autocmd QuickFixCmdPre vimgrep copen
@@ -99,6 +99,4 @@ if has("autocmd")
   autocmd FileType xhtml setlocal sw=2 ts=2 sts=2
   autocmd FileType xml setlocal sw=2 ts=2 sts=2
   autocmd FileType yaml setlocal sw=2 ts=2 sts=2
-  autocmd FileType ruby setlocal sw=2 ts=2 sts=2
-  autocmd FileType vim setlocal sw=2 ts=2 sts=2
 endif " has("autocmd")

@@ -38,26 +38,22 @@ set noswapfile
 set wildmode=longest,list,full
 set splitright
 set showcmd
-
-" GUI settings
 set background=dark
 set showtabline=1
-set nomousehide
 
 if has("gui_running")
+    " GUI-specific settings
     colorscheme ir_black
     runtime ftplugin/man.vim
     nmap K :Man <cword><CR>
-"    set lines=50
     set scrolloff=8
-"    if &diff
-"        set columns=175
-"    endif
     set guioptions-=m   " remove menu bar
     set guioptions-=T   " remove toolbar
     set colorcolumn=80
+    set nomousehide
     hi ColorColumn guibg=#220000
 else
+    " console-specific settings
     set scrolloff=4
 endif
 
@@ -66,20 +62,21 @@ if has("win32") || has("win64")
 endif
 
 " mappings
-map ,# :set paste<CR>O<Esc>75A#<Esc>yypO#<Esc>73A <Esc>A#<Esc>0ll:set nopaste<CR>R
-map ,p :set paste<CR>o#<Esc>73A <Esc>A#<Esc>0ll:set nopaste<CR>R
-map ,* :set paste<CR>O/<Esc>74A*<Esc>o <Esc>73A*<Esc>A/<Esc>O * <Esc>:set nopaste<CR>A
-map ,; :set paste<CR>O;<Esc>74A*<Esc>o;*<Esc>72A <Esc>A*<Esc>o;<Esc>74A*<Esc>0klll:set nopaste<CR>R
-map ,8 :set paste<CR>o<Esc>20A-<Esc>A8<<Esc>20A-<Esc>:set nopaste<CR>0
-map ,m mz:%s/<C-Q><CR>//g<CR>:noh<CR>`z
-map ,t :tabn<CR>
-map ,T :tabp<CR>
-map ,s mz:%s/\v\s+$//<CR>`z
-map ,f :set ts=8<CR>:retab<CR>:set ts=4<CR>
+let mapleader = ','
+map <Leader># :set paste<CR>O<Esc>75A#<Esc>yypO#<Esc>73A <Esc>A#<Esc>0ll:set nopaste<CR>R
+map <Leader>p :set paste<CR>o#<Esc>73A <Esc>A#<Esc>0ll:set nopaste<CR>R
+map <Leader>* :set paste<CR>O/<Esc>74A*<Esc>o <Esc>73A*<Esc>A/<Esc>O * <Esc>:set nopaste<CR>A
+map <Leader>; :set paste<CR>O;<Esc>74A*<Esc>o;*<Esc>72A <Esc>A*<Esc>o;<Esc>74A*<Esc>0klll:set nopaste<CR>R
+map <Leader>8 :set paste<CR>o<Esc>20A-<Esc>A8<<Esc>20A-<Esc>:set nopaste<CR>0
+map <Leader>m mz:%s/<C-Q><CR>//g<CR>:noh<CR>`z
+map <Leader>t :tabn<CR>
+map <Leader>T :tabp<CR>
+map <Leader>s mz:%s/\v\s+$//<CR>`z
+map <Leader>f :set ts=8<CR>:retab<CR>:set ts=4<CR>
 " jump to tag in a new tab
-map ,w :tab :tag <C-R><C-W><CR>
+map <Leader>w :tab :tag <C-R><C-W><CR>
 " re-indent the following line how vim would automatically do it
-map ,j Ji<CR><Esc>
+map <Leader>j Ji<CR><Esc>
 map <C-N> :cn<CR>
 map <C-P> :cp<CR>
 

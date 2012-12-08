@@ -64,9 +64,10 @@ endif
 
 " mappings
 let mapleader = ','
-map <Leader># :set paste<CR>O<Esc>75A#<Esc>yypO#<Esc>73A <Esc>A#<Esc>0ll:set nopaste<CR>R
-map <Leader>p :set paste<CR>o#<Esc>73A <Esc>A#<Esc>0ll:set nopaste<CR>R
-map <Leader>* :set paste<CR>O/<Esc>74A*<Esc>o <Esc>73A*<Esc>A/<Esc>O * <Esc>:set nopaste<CR>A
+map <Leader>C# :set paste<CR>O<Esc>75A#<Esc>yypO# <Esc>:set nopaste<CR>A
+map <Leader>c# :set paste<CR>o<Esc>75A#<Esc>yypO# <Esc>:set nopaste<CR>A
+map <Leader>C* :set paste<CR>O/<Esc>74A*<Esc>o <Esc>73A*<Esc>A/<Esc>O * <Esc>:set nopaste<CR>A
+map <Leader>c* :set paste<CR>o/<Esc>74A*<Esc>o <Esc>73A*<Esc>A/<Esc>O * <Esc>:set nopaste<CR>A
 map <Leader>; :set paste<CR>O;<Esc>74A*<Esc>o;*<Esc>72A <Esc>A*<Esc>o;<Esc>74A*<Esc>0klll:set nopaste<CR>R
 map <Leader>8 :set paste<CR>o<Esc>20A-<Esc>A8<<Esc>20A-<Esc>:set nopaste<CR>0
 map <Leader>m mz:%s/<C-Q><CR>//g<CR>:noh<CR>`z

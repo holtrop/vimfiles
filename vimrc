@@ -78,8 +78,8 @@ map <Leader>f :set ts=8<CR>:retab<CR>:set ts=4<CR>
 map <Leader>w :tab :tag <C-R><C-W><CR>
 " re-indent the following line how vim would automatically do it
 map <Leader>j Ji<CR><Esc>
-map <C-N> :cn<CR>
-map <C-P> :cp<CR>
+map <C-N> :cnext<CR>
+map <C-P> :cprev<CR>
 
 vnoremap <C-J> <Esc>
 vnoremap < <gv

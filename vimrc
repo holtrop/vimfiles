@@ -80,7 +80,7 @@ map <Leader>j Ji<CR><Esc>
 map <C-N> :cn<CR>
 map <C-P> :cp<CR>
 
-" ---- Indenting Visual Blocks ----
+vnoremap <C-J> <Esc>
 vnoremap < <gv
 vnoremap > >gv
 

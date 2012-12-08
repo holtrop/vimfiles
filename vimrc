@@ -1,33 +1,24 @@
+"==============================================================================
+" General Settings
+"==============================================================================
 set nocompatible
-
-if has("autocmd")
-  filetype plugin indent on
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-endif " has("autocmd")
-
-set ruler
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+syntax enable
+filetype plugin indent on
+set backspace=indent,eol,start
 set autoindent
 set copyindent
-set cindent
-set backspace=indent,eol,start
-set mouse=a
-syntax on
-set hlsearch
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+set ruler
 set showmatch
+if has("persistent_undo")
+    "set undodir=$VIMHOME/undo
+    "set undofile
+endif
+set mouse=a
+set hlsearch
 set incsearch
 set tags=./tags;/
 set grepprg=internal
@@ -101,4 +92,13 @@ if has("autocmd")
   autocmd FileType xhtml setlocal sw=2 ts=2 sts=2
   autocmd FileType xml setlocal sw=2 ts=2 sts=2
   autocmd FileType yaml setlocal sw=2 ts=2 sts=2
+  autocmd FileType text setlocal textwidth=78
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
 endif " has("autocmd")

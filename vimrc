@@ -41,11 +41,12 @@ set showcmd
 set background=dark
 set showtabline=1
 
+runtime ftplugin/man.vim
+nmap K :Man <cword><CR>
+
 if has("gui_running")
     " GUI-specific settings
     colorscheme ir_black
-    runtime ftplugin/man.vim
-    nmap K :Man <cword><CR>
     set scrolloff=8
     set guioptions-=m   " remove menu bar
     set guioptions-=T   " remove toolbar

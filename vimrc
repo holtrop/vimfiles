@@ -80,6 +80,10 @@ map <Leader>j Ji<CR><Esc>
 map <C-N> :cn<CR>
 map <C-P> :cp<CR>
 
+" ---- Indenting Visual Blocks ----
+vnoremap < <gv
+vnoremap > >gv
+
 if has("autocmd")
   autocmd FileType text setlocal noautoindent
   autocmd FileType c syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"

@@ -133,3 +133,20 @@ function! LoadProject()
         endif
     endif
 endfunction
+
+function! FindSymbolInProjectSources(...)
+    if a:0 > 0
+        let sym = a:1
+    else
+        let sym = expand("<cword>")
+    endif
+    if exists("b:project_sources")
+        exec 'vimgrep /\<' . sym . '\>/gj ' . b:project_sources
+    endif
+endfunction
+
+"==============================================================================
+" Commands
+"==============================================================================
+
+command! -nargs=? Cf call FindSymbolInProjectSources(<f-args>)

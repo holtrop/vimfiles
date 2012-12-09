@@ -34,7 +34,7 @@ set background=dark
 set showtabline=1
 
 runtime ftplugin/man.vim
-nmap K :Man <cword><CR>
+nnoremap K :Man <cword><CR>
 
 if has("gui_running")
     " GUI-specific settings
@@ -56,22 +56,22 @@ endif
 
 " mappings
 let mapleader = ','
-map <Leader>C# :set paste<CR>O<Esc>75A#<Esc>yypO# <Esc>:set nopaste<CR>A
-map <Leader>c# :set paste<CR>o<Esc>75A#<Esc>yypO# <Esc>:set nopaste<CR>A
-map <Leader>C* :set paste<CR>O/<Esc>74A*<Esc>o <Esc>73A*<Esc>A/<Esc>O * <Esc>:set nopaste<CR>A
-map <Leader>c* :set paste<CR>o/<Esc>74A*<Esc>o <Esc>73A*<Esc>A/<Esc>O * <Esc>:set nopaste<CR>A
-map <Leader>c; :set paste<CR>O;<Esc>74A*<Esc>o;*<Esc>72A <Esc>A*<Esc>o;<Esc>74A*<Esc>0klll:set nopaste<CR>R
-map <Leader>c8 :set paste<CR>o<Esc>20A-<Esc>A8<<Esc>20A-<Esc>:set nopaste<CR>0
-map <Leader>m m`:%s/<C-Q><CR>//g<CR>:noh<CR>``
-map <Leader>t :tabn<CR>
-map <Leader>T :tabp<CR>
-map <Leader>s m`:%s/\v\s+$//<CR>``
+nnoremap <Leader>C# :set paste<CR>O<Esc>75A#<Esc>yypO# <Esc>:set nopaste<CR>A
+nnoremap <Leader>c# :set paste<CR>o<Esc>75A#<Esc>yypO# <Esc>:set nopaste<CR>A
+nnoremap <Leader>C* :set paste<CR>O/<Esc>74A*<Esc>o <Esc>73A*<Esc>A/<Esc>O * <Esc>:set nopaste<CR>A
+nnoremap <Leader>c* :set paste<CR>o/<Esc>74A*<Esc>o <Esc>73A*<Esc>A/<Esc>O * <Esc>:set nopaste<CR>A
+nnoremap <Leader>c; :set paste<CR>O;<Esc>74A*<Esc>o;*<Esc>72A <Esc>A*<Esc>o;<Esc>74A*<Esc>0klll:set nopaste<CR>R
+nnoremap <Leader>c8 :set paste<CR>o<Esc>20A-<Esc>A8<<Esc>20A-<Esc>:set nopaste<CR>0
+nnoremap <Leader>m m`:%s/<C-Q><CR>//g<CR>:noh<CR>``
+nnoremap <Leader>t :tabn<CR>
+nnoremap <Leader>T :tabp<CR>
+nnoremap <Leader>s m`:%s/\v\s+$//<CR>``
 " jump to tag in a new tab
-map <Leader>w :tab :tag <C-R><C-W><CR>
+nnoremap <Leader>w :tab :tag <C-R><C-W><CR>
 " re-indent the following line how vim would automatically do it
-map <Leader>j Ji<CR><Esc>
-map <C-N> :cnext<CR>
-map <C-P> :cprev<CR>
+nnoremap <Leader>j Ji<CR><Esc>
+nnoremap <C-N> :cnext<CR>
+nnoremap <C-P> :cprev<CR>
 
 vnoremap <C-J> <Esc>
 vnoremap < <gv

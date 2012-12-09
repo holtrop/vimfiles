@@ -112,11 +112,15 @@ endif " has("autocmd")
 
 " LoadProject - Searches for and loads project specific settings
 function! LoadProject()
+    if exists("b:project_loaded") && b:project_loaded == 1
+        return
+    endif
     let projfile = findfile("project.vim", ".;")
     if projfile != ""
         let projfile_path = fnamemodify(projfile, ":p:h")
         silent! exec "cd " . projfile_path
         exec "source " . fnameescape(projfile)
+        let b:project_loaded = 1
     else
         let projdir = finddir("project.vim", ".;")
         if projdir != ""
@@ -125,6 +129,7 @@ function! LoadProject()
             for f in split(glob(projdir . '/*.vim'), '\n')
                 exec 'source ' . fnameescape(f)
             endfor
+            let b:project_loaded = 1
         endif
     endif
 endfunction

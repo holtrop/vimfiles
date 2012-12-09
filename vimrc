@@ -117,17 +117,15 @@ function! LoadProject()
     endif
     let projfile = findfile("project.vim", ".;")
     if projfile != ""
-        let projfile_path = fnamemodify(projfile, ":p:h")
-        silent! exec "cd " . projfile_path
-        let b:project_directory = projfile_path
+        let b:project_directory = fnamemodify(projfile, ":p:h")
+        silent! exec "cd " . b:project_directory
         exec "source " . fnameescape(projfile)
         let b:project_loaded = 1
     else
         let projdir = finddir("project.vim", ".;")
         if projdir != ""
-            let projdir_path = fnamemodify(projdir, ":p:h:h")
-            silent! exec "cd " . projdir_path
-            let b:project_directory = projdir_path
+            let b:project_directory = fnamemodify(projdir, ":p:h:h")
+            silent! exec "cd " . b:project_directory
             for f in split(glob(projdir . '/*.vim'), '\n')
                 exec 'source ' . fnameescape(f)
             endfor

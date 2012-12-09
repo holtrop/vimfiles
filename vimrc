@@ -1,7 +1,7 @@
 "==============================================================================
 " General Settings
 "==============================================================================
-let $VIMHOME=fnamemodify(resolve(expand("<sfile>")), ":p:h")
+let $MYVIMFILES=fnamemodify(resolve(expand("<sfile>")), ":p:h")
 set nocompatible
 syntax enable
 filetype plugin indent on
@@ -15,7 +15,7 @@ set softtabstop=4
 set ruler
 set showmatch
 if has("persistent_undo")
-    set undodir=$VIMHOME/undo
+    set undodir=$MYVIMFILES/undo
     set undofile
 endif
 set mouse=a

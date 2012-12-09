@@ -78,28 +78,53 @@ vnoremap < <gv
 vnoremap > >gv
 
 if has("autocmd")
-  autocmd FileType text setlocal noautoindent
-  autocmd FileType c syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
-  autocmd FileType cpp syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
-  autocmd FileType dosbatch syn match Comment "^@rem\($\|\s.*$\)"lc=4 contains=dosbatchTodo,@dosbatchNumber,dosbatchVariable,dosbatchArgument
-  autocmd BufRead,BufNewFile *.dxl set filetype=dxl
-  autocmd FileType dxl setlocal syntax=cpp
-  " install glsl.vim in ~/.vim/syntax to use syntax highlighting for GLSL:
-  autocmd BufRead,BufNewFile *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
-  autocmd Syntax {cpp,c,idl} runtime syntax/doxygen.vim
-  autocmd QuickFixCmdPre grep copen
-  autocmd QuickFixCmdPre vimgrep copen
-  autocmd FileType html setlocal sw=2 ts=2 sts=2
-  autocmd FileType xhtml setlocal sw=2 ts=2 sts=2
-  autocmd FileType xml setlocal sw=2 ts=2 sts=2
-  autocmd FileType yaml setlocal sw=2 ts=2 sts=2
-  autocmd FileType text setlocal textwidth=78
+    autocmd FileType text setlocal noautoindent
+    autocmd FileType c syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
+    autocmd FileType cpp syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
+    autocmd FileType dosbatch syn match Comment "^@rem\($\|\s.*$\)"lc=4 contains=dosbatchTodo,@dosbatchNumber,dosbatchVariable,dosbatchArgument
+    autocmd BufRead,BufNewFile *.dxl set filetype=dxl
+    autocmd FileType dxl setlocal syntax=cpp
+    " install glsl.vim in ~/.vim/syntax to use syntax highlighting for GLSL:
+    autocmd BufRead,BufNewFile *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
+    autocmd Syntax {cpp,c,idl} runtime syntax/doxygen.vim
+    autocmd QuickFixCmdPre grep copen
+    autocmd QuickFixCmdPre vimgrep copen
+    autocmd FileType html setlocal sw=2 ts=2 sts=2
+    autocmd FileType xhtml setlocal sw=2 ts=2 sts=2
+    autocmd FileType xml setlocal sw=2 ts=2 sts=2
+    autocmd FileType yaml setlocal sw=2 ts=2 sts=2
+    autocmd FileType text setlocal textwidth=78
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                \   exe "normal! g`\"" |
+                \ endif
+
+    autocmd BufEnter * call LoadProject()
 endif " has("autocmd")
+
+"==============================================================================
+" Functions
+"==============================================================================
+
+" LoadProject - Searches for and loads project specific settings
+function! LoadProject()
+    let projfile = findfile("project.vim", ".;")
+    if projfile != ""
+        let projfile_path = fnamemodify(projfile, ":p:h")
+        silent! exec "cd " . projfile_path
+        exec "source " . fnameescape(projfile)
+    else
+        let projdir = finddir("project.vim", ".;")
+        if projdir != ""
+            let projdir_path = fnamemodify(projdir, ":p:h:h")
+            silent! exec "cd " . projdir_path
+            for f in split(glob(projdir . '/*.vim'), '\n')
+                exec 'source ' . fnameescape(f)
+            endfor
+        endif
+    endif
+endfunction

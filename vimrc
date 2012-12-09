@@ -119,6 +119,7 @@ function! LoadProject()
     if projfile != ""
         let projfile_path = fnamemodify(projfile, ":p:h")
         silent! exec "cd " . projfile_path
+        let b:project_directory = projfile_path
         exec "source " . fnameescape(projfile)
         let b:project_loaded = 1
     else
@@ -126,6 +127,7 @@ function! LoadProject()
         if projdir != ""
             let projdir_path = fnamemodify(projdir, ":p:h:h")
             silent! exec "cd " . projdir_path
+            let b:project_directory = projdir_path
             for f in split(glob(projdir . '/*.vim'), '\n')
                 exec 'source ' . fnameescape(f)
             endfor

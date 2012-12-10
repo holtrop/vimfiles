@@ -103,7 +103,8 @@ if has("autocmd")
                 \   exe "normal! g`\"" |
                 \ endif
 
-    autocmd BufEnter * call LoadProject()
+    autocmd BufWinEnter * call LoadProject()
+    autocmd BufEnter * call ProjectCD()
 endif " has("autocmd")
 
 "==============================================================================
@@ -118,19 +119,25 @@ function! LoadProject()
     let projfile = findfile("project.vim", ".;")
     if projfile != ""
         let b:project_directory = fnamemodify(projfile, ":p:h")
-        silent! exec "cd " . b:project_directory
         exec "source " . fnameescape(projfile)
         let b:project_loaded = 1
     else
         let projdir = finddir("project.vim", ".;")
         if projdir != ""
             let b:project_directory = fnamemodify(projdir, ":p:h:h")
-            silent! exec "cd " . b:project_directory
             for f in split(glob(projdir . '/*.vim'), '\n')
                 exec 'source ' . fnameescape(f)
             endfor
             let b:project_loaded = 1
         endif
+    endif
+endfunction
+
+" ProjectCD - Change to the project directory
+" for some reason doing this in LoadProject() didn't work on Windows
+function! ProjectCD()
+    if exists("b:project_directory")
+        exec "cd " . fnameescape(b:project_directory)
     endif
 endfunction
 

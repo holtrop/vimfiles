@@ -145,6 +145,7 @@ function! FindSymbolInSources(sources, ...)
     if n_matches == 0
         cclose
     else
-        echomsg "Found " . n_matches . " matches"
+        redraw " the following echo will be lost without redrawing here
+        echo "Found " . n_matches . " matches"
     endif
 endfunction

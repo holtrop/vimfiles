@@ -86,8 +86,7 @@ if has("autocmd")
     autocmd FileType c syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
     autocmd FileType cpp syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
     autocmd FileType dosbatch syn match Comment "^@rem\($\|\s.*$\)"lc=4 contains=dosbatchTodo,@dosbatchNumber,dosbatchVariable,dosbatchArgument
-    autocmd BufRead,BufNewFile *.dxl set filetype=dxl
-    autocmd FileType dxl setlocal syntax=cpp
+    autocmd BufRead,BufNewFile *.dxl set syntax=cpp
     " install glsl.vim in ~/.vim/syntax to use syntax highlighting for GLSL:
     autocmd BufRead,BufNewFile *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
     autocmd Syntax {cpp,c,idl} runtime syntax/doxygen.vim

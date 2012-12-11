@@ -52,6 +52,10 @@ endif
 
 if has("win32") || has("win64")
     set directory=$TMP
+    if filereadable('C:/cygwin/bin/bash.exe')
+        set shell=C:/cygwin/bin/bash.exe
+        set shellcmdflag=--login\ -c
+    endif
 endif
 
 " mappings

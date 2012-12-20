@@ -160,3 +160,10 @@ function! FindSymbolInSources(sources, ...)
         echo "Found " . n_matches . " matches"
     endif
 endfunction
+
+"==============================================================================
+" Machine-local Settings
+"==============================================================================
+if filereadable($MYVIMRC . ".local")
+    exec 'source ' . $MYVIMRC . ".local"
+endif

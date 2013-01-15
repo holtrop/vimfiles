@@ -177,7 +177,18 @@ function! PtagSymbolBeforeParen()
     if a:symidx != -1
         let a:line = strpart(a:line, a:symidx)
     endif
-    execute 'silent! ptag ' . a:line
+    if &syntax == 'vim'
+        execute 'silent! help ' . a:line
+        if &filetype == 'help'
+            " we successfully opened the help window
+            execute "normal 1000\<C-w>-"
+            setlocal winheight=10
+            execute "normal \<C-w>\<C-w>"
+            startinsert
+        endif
+    else
+        execute 'silent! ptag ' . a:line
+    endif
 endfunction
 
 "==============================================================================

@@ -81,6 +81,9 @@ vnoremap <C-J> <Esc>
 vnoremap < <gv
 vnoremap > >gv
 
+inoremap <C-Space> <C-o>:call PtagSymbolBeforeParen()<CR>
+inoremap <C-S-Space> <C-o>:pclose<CR>
+
 if has("autocmd")
     autocmd FileType text setlocal noautoindent
     autocmd FileType c syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
@@ -159,6 +162,22 @@ function! FindSymbolInSources(sources, ...)
         redraw " the following echo will be lost without redrawing here
         echo "Found " . n_matches . " matches"
     endif
+endfunction
+
+" PtagSymbolBeforeParen - can be called from insert mode when the cursor
+" is anywhere within the parentheses of a function call in order to open
+" the called-function's prototype in the Preview window using :ptag
+function! PtagSymbolBeforeParen()
+    let a:line = getline(".")
+    let a:paren_pos = strridx(a:line, "(", col("."))
+    if a:paren_pos != -1
+        let a:line = strpart(a:line, 0, a:paren_pos)
+    endif
+    let a:symidx = match(a:line, '\v[a-zA-Z_][a-zA-Z_0-9]*$')
+    if a:symidx != -1
+        let a:line = strpart(a:line, a:symidx)
+    endif
+    execute 'silent! ptag ' . a:line
 endfunction
 
 "==============================================================================

@@ -14,10 +14,10 @@ set expandtab
 set softtabstop=4
 set ruler
 set showmatch
-if has("persistent_undo")
-    set undodir=$MYVIMFILES/undo
-    set undofile
-endif
+"if has("persistent_undo")
+"    set undodir=$MYVIMFILES/undo
+"    set undofile
+"endif
 set mouse=a
 set hlsearch
 set incsearch

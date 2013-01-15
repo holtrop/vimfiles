@@ -168,17 +168,17 @@ endfunction
 " is anywhere within the parentheses of a function call in order to open
 " the called-function's prototype in the Preview window using :ptag
 function! PtagSymbolBeforeParen()
-    let a:line = getline(".")
-    let a:paren_pos = strridx(a:line, "(", col("."))
-    if a:paren_pos != -1
-        let a:line = strpart(a:line, 0, a:paren_pos)
+    let l:line = getline(".")
+    let l:paren_pos = strridx(l:line, "(", col("."))
+    if l:paren_pos != -1
+        let l:line = strpart(l:line, 0, l:paren_pos)
     endif
-    let a:symidx = match(a:line, '\v[a-zA-Z_][a-zA-Z_0-9]*$')
-    if a:symidx != -1
-        let a:line = strpart(a:line, a:symidx)
+    let l:symidx = match(l:line, '\v[a-zA-Z_][a-zA-Z_0-9]*$')
+    if l:symidx != -1
+        let l:line = strpart(l:line, l:symidx)
     endif
     if &syntax == 'vim'
-        execute 'silent! help ' . a:line
+        execute 'silent! help ' . l:line
         if &filetype == 'help'
             " we successfully opened the help window
             execute "normal 1000\<C-w>-"
@@ -187,7 +187,7 @@ function! PtagSymbolBeforeParen()
             startinsert
         endif
     else
-        execute 'silent! ptag ' . a:line
+        execute 'silent! ptag ' . l:line
     endif
 endfunction
 

@@ -81,8 +81,8 @@ vnoremap <C-J> <Esc>
 vnoremap < <gv
 vnoremap > >gv
 
-inoremap <C-Space> <C-o>:call PtagSymbolBeforeParen()<CR>
-inoremap <C-S-Space> <C-o>:pclose<CR>
+inoremap <silent> <C-Space> <C-o>:call PtagSymbolBeforeParen()<CR>
+inoremap <silent> <C-S-Space> <C-o>:pclose<CR>
 
 if has("autocmd")
     autocmd FileType text setlocal noautoindent

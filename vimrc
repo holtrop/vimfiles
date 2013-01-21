@@ -101,6 +101,7 @@ if has("autocmd")
     autocmd FileType yaml setlocal sw=2 ts=2 sts=2
     autocmd FileType text setlocal textwidth=78
     autocmd BufRead,BufNewFile *.icf set syntax=cpp
+    autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler

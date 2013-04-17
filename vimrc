@@ -55,6 +55,7 @@ if has("win32") || has("win64")
     if filereadable('C:/cygwin/bin/bash.exe')
         set shell=C:/cygwin/bin/bash.exe
         set shellcmdflag=--login\ -c
+        let $CHERE_INVOKING=1
     endif
 endif
 

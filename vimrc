@@ -85,6 +85,8 @@ vnoremap > >gv
 inoremap <silent> <C-Space> <C-o>:call PtagSymbolBeforeParen()<CR>
 inoremap <silent> <C-S-Space> <C-o>:pclose<CR>
 
+inoremap <C-Enter> <Esc>O
+
 if has("autocmd")
     autocmd FileType text setlocal noautoindent
     autocmd FileType c syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"

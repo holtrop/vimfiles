@@ -108,6 +108,12 @@ if has("autocmd")
     autocmd FileType ruby setlocal sw=2 ts=2 sts=2
     autocmd BufRead,BufNewFile *.di set filetype=d
 
+    if has("gui_running")
+        autocmd WinLeave * set nocursorline nocursorcolumn
+        autocmd WinEnter * set cursorline cursorcolumn
+        set cursorline cursorcolumn
+    end
+
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
     " (happens when dropping a file on gvim).

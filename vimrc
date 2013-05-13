@@ -57,6 +57,7 @@ if has("win32") || has("win64")
         set shellcmdflag=--login\ -c
         let $CHERE_INVOKING=1
     endif
+    set guifont=Consolas:h11:cANSI
 endif
 
 " mappings

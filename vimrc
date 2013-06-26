@@ -206,6 +206,13 @@ function! PtagSymbolBeforeParen()
 endfunction
 
 "==============================================================================
+" Commands
+"==============================================================================
+command! -nargs=? Bf call FindSymbolInSources(b:project_sources . ' ' . b:test_sources, <f-args>)
+command! -nargs=? Cf call FindSymbolInSources(b:project_sources, <f-args>)
+command! -nargs=? Tf call FindSymbolInSources(b:test_sources, <f-args>)
+
+"==============================================================================
 " Machine-local Settings
 "==============================================================================
 if filereadable($MYVIMRC . ".local")

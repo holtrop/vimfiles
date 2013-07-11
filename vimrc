@@ -108,6 +108,7 @@ if has("autocmd")
     autocmd FileType text setlocal textwidth=78
     autocmd BufRead,BufNewFile *.icf set syntax=cpp
     autocmd FileType ruby setlocal sw=2 ts=2 sts=2
+    autocmd FileType ruby set iskeyword+=@-@,?
     autocmd BufRead,BufNewFile *.di set filetype=d
 
     if has("gui_running")

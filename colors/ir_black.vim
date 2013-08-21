@@ -134,7 +134,7 @@ hi link Include         PreProc
 hi link Define          PreProc
 hi link Macro           PreProc
 hi link PreCondit       PreProc
-hi link StorageClass    Type
+hi link StorageClass    Identifier
 hi link Structure       Type
 hi link Typedef         Type
 hi link Tag             Special

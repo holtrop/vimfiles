@@ -32,6 +32,7 @@ set splitright
 set showcmd
 set background=dark
 set showtabline=1
+set cinoptions=:0
 
 runtime ftplugin/man.vim
 nnoremap K :Man <cword><CR>

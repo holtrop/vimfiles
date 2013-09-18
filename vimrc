@@ -110,6 +110,7 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.icf set syntax=cpp
     autocmd FileType ruby,eruby setlocal sw=2 ts=2 sts=2 iskeyword+=@-@,?
     autocmd BufRead,BufNewFile *.di set filetype=d
+    autocmd BufNewFile,BufReadPre *.h.erb let b:eruby_subtype = "c"
 
     if has("gui_running")
         autocmd WinLeave * set nocursorline nocursorcolumn

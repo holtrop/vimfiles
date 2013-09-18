@@ -108,9 +108,10 @@ if has("autocmd")
     autocmd FileType yaml setlocal sw=2 ts=2 sts=2
     autocmd FileType text setlocal textwidth=78
     autocmd BufRead,BufNewFile *.icf set syntax=cpp
-    autocmd FileType ruby,eruby setlocal sw=2 ts=2 sts=2 iskeyword+=@-@,?
+    autocmd Syntax ruby setlocal sw=2 ts=2 sts=2 iskeyword+=@-@,?
     autocmd BufRead,BufNewFile *.di set filetype=d
     autocmd BufNewFile,BufReadPre *.h.erb let b:eruby_subtype = "c"
+    autocmd BufNewFile,BufRead *.[ch].erb setlocal sw=4 ts=4 sts=4
 
     if has("gui_running")
         autocmd WinLeave * set nocursorline nocursorcolumn

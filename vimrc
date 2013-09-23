@@ -91,6 +91,8 @@ inoremap <silent> <C-S-Space> <C-o>:pclose<CR>
 inoremap <C-Enter> <Esc>O
 
 if has("autocmd")
+  augroup joshs
+    autocmd!
     autocmd FileType text setlocal noautoindent
     autocmd FileType c syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
     autocmd FileType cpp syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
@@ -129,6 +131,7 @@ if has("autocmd")
 
     autocmd BufWinEnter * call LoadProject()
     autocmd BufEnter * call ProjectCD()
+  augroup END
 endif " has("autocmd")
 
 "==============================================================================

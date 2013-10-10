@@ -94,8 +94,7 @@ if has("autocmd")
   augroup joshs
     autocmd!
     autocmd FileType text setlocal noautoindent
-    autocmd FileType c syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
-    autocmd FileType cpp syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
+    autocmd Syntax c,cpp syn match Constant display "\<[A-Z_][A-Z_0-9]*\>"
     autocmd FileType dosbatch syn match Comment "^@rem\($\|\s.*$\)"lc=4 contains=dosbatchTodo,@dosbatchNumber,dosbatchVariable,dosbatchArgument
     autocmd BufRead,BufNewFile *.dxl setf java
     autocmd BufRead,BufNewFile *.dxl setlocal sw=2 ts=2 sts=2

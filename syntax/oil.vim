@@ -150,6 +150,8 @@ else
   syn region	oilComment	matchgroup=oilCommentStart start="/\*" matchgroup=NONE end="\*/" contains=@oilCommentGroup,oilCommentStartError,oilSpaceError
 endif
 
+syn region	oilPreProc	start="^\s*\(%:\|#\)\s*include\>" skip="\\$" end="$"
+
 syntax match	oilCommentError	display "\*/"
 syntax match	oilCommentStartError display "/\*"me=e-1 contained
 
@@ -194,7 +196,9 @@ if version >= 508 || !exists("did_oil_syntax_inits")
   highlight link oilString          String
   highlight link oilCharacter       Character
   highlight link oilComment         Comment
+  highlight link oilCommentL        Comment
   highlight link oilCommentStart	oilComment
+  highlight link oilPreProc         PreProc
   delcommand HiLink
 endif
 

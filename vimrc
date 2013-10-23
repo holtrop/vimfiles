@@ -114,6 +114,7 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.di set filetype=d
     autocmd BufNewFile,BufReadPre *.h.erb let b:eruby_subtype = "c"
     autocmd BufNewFile,BufRead *.[ch].erb setlocal sw=4 ts=4 sts=4
+    autocmd BufRead,BufNewFile *.oil,*.OIL set filetype=oil
 
     if has("gui_running")
         autocmd WinLeave * set nocursorline nocursorcolumn

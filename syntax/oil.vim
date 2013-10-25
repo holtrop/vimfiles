@@ -192,6 +192,7 @@ if version >= 508 || !exists("did_oil_syntax_inits")
   highlight link oilSpecial         Special
   highlight link oilBoolean         Boolean
   highlight link oilNumber          Number
+  highlight link oilFloat           Number
   highlight link oilConstant        Constant
   highlight link oilString          String
   highlight link oilCharacter       Character

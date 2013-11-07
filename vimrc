@@ -37,6 +37,8 @@ set cinoptions=:0,(0
 runtime ftplugin/man.vim
 nnoremap K :Man <cword><CR>
 
+let g:qnamebuf_hotkey = "<C-s>"
+
 if has("gui_running")
     " GUI-specific settings
     colorscheme ir_black

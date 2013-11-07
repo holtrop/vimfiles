@@ -140,9 +140,9 @@ function! QNamePickerRun()
 		if _nr < _len
 			call s:Finish(s:indices[_nr], "\<CR>")
 		endif
-	elseif _key == "\<Up>"
+	elseif _key == "\<Up>" || _key == "\<C-K>" || _key == "\<S-Tab>"
 		call s:colPrinter.vert(-1)
-	elseif _key == "\<Down>"
+	elseif _key == "\<Down>" || _key == "\<C-J>" || _key == "\<Tab>"
 		call s:colPrinter.vert(1)
 	elseif _key == "\<Left>"
 		call s:colPrinter.horz(-1)

@@ -34,8 +34,8 @@ function! QNameBufInit(regexp, ...)
 				\ "complete_func": function("QNameBufCompletion"),
 				\ "modifiers": ["l", "d", "c", "\<M-l>", "\<M-d>", "\<M-c>"],
 				\ "modifier_func": function("QNameBufModifier"),
-				\ "acceptors": ["v", "s", "t", "\<M-v>", "\<M-s>", "\<M-t>"],
-				\ "cancelors": ["g", "\<C-g>", s:qnamebuf_hotkey],
+				\ "acceptors": ["v", "s", "t", "\<M-v>", "\<M-s>", "\<M-t>", "\<C-v>", "\<C-s>", "\<C-t>"],
+				\ "cancelors": ["g", "\<C-g>"],
 				\ "regexp": a:regexp,
 				\ "use_leader": (a:0 > 2) ? a:3 : 0,
 				\ "height": (a:0 > 0) ? a:1 : 0,
@@ -54,11 +54,11 @@ function! QNameBufModifier(index, key)
 endfunction
 
 function! QNameBufCompletion(index, key)
-	if a:key == "v" || a:key == "\<M-v>"
+	if a:key == "v" || a:key == "\<M-v>" || a:key == "\<C-v>"
 		vert split
-	elseif a:key == "s" || a:key == "\<M-s>"
+	elseif a:key == "s" || a:key == "\<M-s>" || a:key == "\<C-s>"
 		split
-	elseif a:key == "t" || a:key == "\<M-t>"
+	elseif a:key == "t" || a:key == "\<M-t>" || a:key == "\<C-t>"
 		tab split
 	endif
 	call s:swb(g:cmd_arr[a:index]['bno'])

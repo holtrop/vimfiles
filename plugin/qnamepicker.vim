@@ -210,7 +210,10 @@ function! s:FilterList()
 			let query = substitute(query, "\\", "\\\\", "g")
 			let query = substitute(query, "\\.\\.", "\\\\..", "g")
 		endif
+		let s:saved_ignorecase = &ignorecase
+		let &ignorecase = 1
 		let s:indices = filter(s:indices, "s:origList[v:val] =~ '" . query . "'")
+		let &ignorecase = s:saved_ignorecase
 	endif
 	call s:colPrinter.put(s:indices, s:colPrinter.sel)
 endfunction

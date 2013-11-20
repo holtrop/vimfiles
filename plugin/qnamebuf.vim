@@ -32,7 +32,7 @@ function! QNameBufInit(regexp, ...)
 	call QNamePickerStart(name_arr, {
 				\ "render_func": function("QNameBufRender"),
 				\ "complete_func": function("QNameBufCompletion"),
-				\ "modifiers": ["l", "d", "c", "\<M-l>", "\<M-d>", "\<M-c>"],
+				\ "modifiers": ["l", "d", "c", "\<M-l>", "\<M-d>", "\<C-d>", "\<M-c>"],
 				\ "modifier_func": function("QNameBufModifier"),
 				\ "acceptors": ["v", "s", "t", "\<M-v>", "\<M-s>", "\<M-t>", "\<C-v>", "\<C-s>", "\<C-t>"],
 				\ "cancelors": ["g", "\<C-g>"],
@@ -45,7 +45,7 @@ endfunction
 function! QNameBufModifier(index, key)
 	if a:key == "l" || a:key == "\<M-l>"
 		let s:unlisted = 1 - s:unlisted
-	elseif a:key == "d" || a:key == "\<M-d>" && a:index >= 0
+	elseif a:key == "d" || a:key == "\<M-d>" || a:key == "\<C-d>" && a:index >= 0
 		exe 'bd ' . g:cmd_arr[a:index]['bno']
 	elseif a:key == "c" || a:key == "\<M-c>" && a:index >= 0
 		call s:closewindow(g:cmd_arr[a:index]['bno'])

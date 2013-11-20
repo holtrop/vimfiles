@@ -34,9 +34,6 @@ set background=dark
 set showtabline=1
 set cinoptions=:0,(0
 set hidden
-if bufname('%') == ''
-  set bufhidden=wipe
-endif
 
 runtime ftplugin/man.vim
 nnoremap K :Man <cword><CR>
@@ -122,6 +119,8 @@ if has("autocmd")
     autocmd BufNewFile,BufReadPre *.h.erb let b:eruby_subtype = "c"
     autocmd BufNewFile,BufRead *.[ch].erb setlocal sw=4 ts=4 sts=4
     autocmd BufRead,BufNewFile *.oil,*.OIL set filetype=oil
+
+    autocmd BufEnter * if bufname('%') == '' | set bufhidden=wipe | endif
 
     if has("gui_running")
         autocmd WinLeave * set nocursorline nocursorcolumn

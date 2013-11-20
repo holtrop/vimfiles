@@ -33,6 +33,10 @@ set showcmd
 set background=dark
 set showtabline=1
 set cinoptions=:0,(0
+set hidden
+if bufname('%') == ''
+  set bufhidden=wipe
+endif
 
 runtime ftplugin/man.vim
 nnoremap K :Man <cword><CR>

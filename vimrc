@@ -81,7 +81,7 @@ nnoremap <Leader>s m`:%s/\v\s+$//<CR>``
 nnoremap <Leader>w :tab :tag <C-R><C-W><CR>
 " re-indent the following line how vim would automatically do it
 nnoremap <Leader>j Ji<CR><Esc>
-nmap <Leader>f :call QNameFileInit(".", "", 1)<CR>:~
+nmap <Leader>f :call QNameFileInit(".", "", 1, "Build")<CR>:~
 nnoremap <C-N> :cnext<CR>
 nnoremap <C-P> :cprev<CR>
 

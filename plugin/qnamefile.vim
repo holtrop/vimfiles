@@ -30,7 +30,7 @@ let g:qnamefile_regexp = 0
 " Find all files from path of the given extension ignoring hidden files
 " a:path Where to start searching from
 " a:extensions A space separated list of extensions to filter on (e.g. "java cpp h")
-function! QNameFileInit(path, extensions, include_hidden)
+function! QNameFileInit(path, extensions, include_hidden, ignore_paths)
 	let path = a:path
 	if path != ""
 	  let path = ""
@@ -51,8 +51,16 @@ function! QNameFileInit(path, extensions, include_hidden)
 	if !a:include_hidden
 		let hidden = '-not -regex ".*/\..*"'
 	endif
+	let ignore_paths = [".git", ".svn"]
+	if a:ignore_paths != ""
+    let ignore_paths = ignore_paths + split(a:ignore_paths, ",")
+  end
+  let ignore = ""
+  for ignore_path in ignore_paths
+    let ignore = ignore . " -name " . ignore_path . " -prune -o"
+  endfor
 	"let ofnames = sort(split(system('find ' . a:path . ' -type f ' . hidden . ' ' . ext . ' -print'), "\n"))
-	let ofnames = sort(split(system('find ' . path . ' -name .git -prune -o -name .svn -prune -o -not -type f -o -print'), "\n"))
+	let ofnames = sort(split(system('find ' . path . ignore . " -not -type f -o -print"), "\n"))
 	let g:cmd_arr = map(ofnames, "fnamemodify(v:val, ':.')")
 	call QNamePickerStart(g:cmd_arr, {
 				\ "complete_func": function("QNameFileCompletion"),

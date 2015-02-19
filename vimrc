@@ -25,7 +25,7 @@ set tags=./tags;/
 set grepprg=internal
 set tabpagemax=999
 set nobackup
-set nowritebackup
+"set nowritebackup
 set noswapfile
 set wildmode=longest,list,full
 set splitright

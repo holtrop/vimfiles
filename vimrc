@@ -31,7 +31,6 @@ set wildmode=longest,list,full
 set splitright
 set showcmd
 set background=dark
-set showtabline=1
 set cinoptions=:0,(0
 set hidden
 
@@ -49,9 +48,11 @@ if has("gui_running")
     set colorcolumn=80
     set nomousehide
     hi ColorColumn guibg=#220000
+    set showtabline=2
 else
     " console-specific settings
     set scrolloff=4
+    set showtabline=1
 endif
 
 if has("win32") || has("win64")

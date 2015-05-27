@@ -113,6 +113,7 @@ if has("autocmd")
     autocmd FileType xml setlocal sw=2 ts=2 sts=2
     autocmd FileType yaml setlocal sw=2 ts=2 sts=2
     autocmd FileType text setlocal textwidth=78
+    autocmd FileType gitolite setlocal sw=2 ts=2 sts=2
     autocmd BufRead,BufNewFile *.icf set syntax=cpp
     autocmd Syntax ruby setlocal sw=2 ts=2 sts=2 iskeyword+=@-@,?
     autocmd Syntax vim setlocal sw=2 ts=2 sts=2

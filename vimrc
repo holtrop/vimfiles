@@ -75,11 +75,11 @@ nnoremap <Leader>c* :set paste<CR>o/<Esc>74A*<Esc>o <Esc>73A*<Esc>A/<Esc>O * <Es
 nnoremap <Leader>c; :set paste<CR>O;<Esc>74A*<Esc>o;*<Esc>72A <Esc>A*<Esc>o;<Esc>74A*<Esc>0klll:set nopaste<CR>R
 nnoremap <Leader>c8 :set paste<CR>o<Esc>20A-<Esc>A8<<Esc>20A-<Esc>:set nopaste<CR>0
 nnoremap <Leader>m m`:%s/<C-Q><CR>//g<CR>:noh<CR>``
-nnoremap <Leader>t :tabn<CR>
-nnoremap <Leader>T :tabp<CR>
+nnoremap <silent> <Leader>t :tabn<CR>
+nnoremap <silent> <Leader>T :tabp<CR>
 " Move a tab with Ctrl+Shift+Page{Up,Down}
-nnoremap <C-S-PageUp> :tabmove -1<CR>
-nnoremap <C-S-PageDown> :tabmove +1<CR>
+nnoremap <silent> <C-S-PageUp> :tabmove -1<CR>
+nnoremap <silent> <C-S-PageDown> :tabmove +1<CR>
 nnoremap <Leader>s m`:%s/\v\s+$//<CR>``
 " jump to tag in a new tab
 nnoremap <Leader>w :tab :tag <C-R><C-W><CR>

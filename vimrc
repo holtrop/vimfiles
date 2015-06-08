@@ -77,6 +77,9 @@ nnoremap <Leader>c8 :set paste<CR>o<Esc>20A-<Esc>A8<<Esc>20A-<Esc>:set nopaste<C
 nnoremap <Leader>m m`:%s/<C-Q><CR>//g<CR>:noh<CR>``
 nnoremap <Leader>t :tabn<CR>
 nnoremap <Leader>T :tabp<CR>
+" Move a tab with Ctrl+Shift+Page{Up,Down}
+nnoremap <C-S-PageUp> :tabmove -1<CR>
+nnoremap <C-S-PageDown> :tabmove +1<CR>
 nnoremap <Leader>s m`:%s/\v\s+$//<CR>``
 " jump to tag in a new tab
 nnoremap <Leader>w :tab :tag <C-R><C-W><CR>

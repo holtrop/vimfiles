@@ -103,6 +103,7 @@ if has("autocmd")
     autocmd FileType dosbatch syn match Comment "^@rem\($\|\s.*$\)"lc=4 contains=dosbatchTodo,@dosbatchNumber,dosbatchVariable,dosbatchArgument
     autocmd BufRead,BufNewFile *.dxl setf java
     autocmd BufRead,BufNewFile *.dxl setlocal sw=2 ts=2 sts=2
+    autocmd BufRead,BufNewFile Rsconsfile setf ruby
     " install glsl.vim in ~/.vim/syntax to use syntax highlighting for GLSL:
     autocmd BufRead,BufNewFile *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
     autocmd Syntax {cpp,c,idl} runtime syntax/doxygen.vim

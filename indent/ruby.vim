@@ -102,7 +102,7 @@ let s:splat_regex = '[[,(]\s*\*\s*\%(#.*\)\=$'
 " The reason is that the pipe matches a hanging "|" operator.
 "
 let s:block_regex =
-      \ '\%(\<do:\@!\>\|%\@<!{\)\s*\%(|\s*(*\s*\%([*@&]\=\h\w*,\=\s*\)\%(,\s*(*\s*[*@&]\=\h\w*\s*)*\s*\)*|\)\=\s*\%(#.*\)\=$'
+      \ '\%([^.]\<do:\@!\>\|%\@<!{\)\s*\%(|\s*(*\s*\%([*@&]\=\h\w*,\=\s*\)\%(,\s*(*\s*[*@&]\=\h\w*\s*)*\s*\)*|\)\=\s*\%(#.*\)\=$'
 
 let s:block_continuation_regex = '^\s*[^])}\t ].*'.s:block_regex
 

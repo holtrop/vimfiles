@@ -227,6 +227,16 @@ function! PtagSymbolBeforeParen()
     endif
 endfunction
 
+function! Tedit()
+  if &filetype == 'ruby'
+    exec 'leftabove vertical sfind ' . expand('%:t:r') . '_spec.rb'
+  elseif &filetype == 'cpp'
+    exec 'leftabove vertical sfind test_' . expand('%:t:r') . '.cc'
+  else
+    exec 'leftabove vertical sfind test_' . expand('%:t:r') . '.c'
+  endif
+endfunction
+
 "==============================================================================
 " Commands
 "==============================================================================
@@ -236,6 +246,7 @@ command! -nargs=? Tf call FindSymbolInSources(b:test_sources, <f-args>)
 command! Cedit exec 'rightbelow vertical sfind ' . substitute(expand('%:t:r'), "test_", "", "") . '.c'
 command! CCedit exec 'rightbelow vertical sfind ' . substitute(expand('%:t:r'), "test_", "", "") . '.cc'
 command! Hedit exec 'rightbelow vertical sfind ' . expand('%:t:r') . '.h'
+command! Tedit call Tedit()
 
 "==============================================================================
 " Machine-local Settings

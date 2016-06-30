@@ -49,6 +49,7 @@ if has("gui_running")
     set nomousehide
     hi ColorColumn guibg=#220000
     set showtabline=2
+    let &titlestring=tolower(substitute(v:servername, "\\d$", "", "")) . ": %t%m (%{expand('%:p:h')})"
 else
     " console-specific settings
     set scrolloff=4

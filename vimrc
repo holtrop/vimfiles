@@ -40,31 +40,31 @@ nnoremap K :Man <cword><CR>
 let g:qnamebuf_hotkey = "<C-s>"
 
 if has("gui_running")
-    " GUI-specific settings
-    colorscheme ir_black
-    set scrolloff=8
-    set guioptions-=m   " remove menu bar
-    set guioptions-=T   " remove toolbar
-    set colorcolumn=80
-    set nomousehide
-    hi ColorColumn guibg=#220000
-    set showtabline=2
-    let &titlestring=tolower(substitute(v:servername, "\\d$", "", "")) . ": %t%m (%{expand('%:p:h')})"
+  " GUI-specific settings
+  colorscheme ir_black
+  set scrolloff=8
+  set guioptions-=m   " remove menu bar
+  set guioptions-=T   " remove toolbar
+  set colorcolumn=80
+  set nomousehide
+  hi ColorColumn guibg=#220000
+  set showtabline=2
+  let &titlestring=tolower(substitute(v:servername, "\\d$", "", "")) . ": %t%m (%{expand('%:p:h')})"
 else
-    " console-specific settings
-    set scrolloff=4
-    set showtabline=1
+  " console-specific settings
+  set scrolloff=4
+  set showtabline=1
 endif
 
 if has("win32") || has("win64")
-    set directory=$TMP
-    if filereadable('C:/cygwin/bin/bash.exe')
-        set shell=C:/cygwin/bin/bash.exe
-        set shellcmdflag=--login\ -c
-        let $CHERE_INVOKING=1
-    endif
-    set guifont=Consolas:h11:cANSI
-    set linespace=0
+  set directory=$TMP
+  if filereadable('C:/cygwin/bin/bash.exe')
+    set shell=C:/cygwin/bin/bash.exe
+    set shellcmdflag=--login\ -c
+    let $CHERE_INVOKING=1
+  endif
+  set guifont=Consolas:h11:cANSI
+  set linespace=0
 endif
 
 " mappings
@@ -132,9 +132,9 @@ if has("autocmd")
     autocmd BufEnter * if bufname('%') == '' | set bufhidden=wipe | endif
 
     if has("gui_running")
-        autocmd WinLeave * set nocursorline nocursorcolumn
-        autocmd WinEnter * set cursorline cursorcolumn
-        set cursorline cursorcolumn
+      autocmd WinLeave * set nocursorline nocursorcolumn
+      autocmd WinEnter * set cursorline cursorcolumn
+      set cursorline cursorcolumn
     end
 
     " When editing a file, always jump to the last known cursor position.
@@ -156,75 +156,75 @@ endif " has("autocmd")
 
 " LoadProject - Searches for and loads project specific settings
 function! LoadProject()
-    if exists("b:project_loaded") && b:project_loaded == 1
-        return
+  if exists("b:project_loaded") && b:project_loaded == 1
+    return
+  endif
+  let projfile = findfile("project.vim", ".;")
+  if projfile != ""
+    let b:project_directory = fnamemodify(projfile, ":p:h")
+    exec "source " . fnameescape(projfile)
+    let b:project_loaded = 1
+  else
+    let projdir = finddir("project.vim", ".;")
+    if projdir != ""
+      let b:project_directory = fnamemodify(projdir, ":p:h:h")
+      for f in split(glob(projdir . '/*.vim'), '\n')
+        exec 'source ' . fnameescape(f)
+      endfor
+      let b:project_loaded = 1
     endif
-    let projfile = findfile("project.vim", ".;")
-    if projfile != ""
-        let b:project_directory = fnamemodify(projfile, ":p:h")
-        exec "source " . fnameescape(projfile)
-        let b:project_loaded = 1
-    else
-        let projdir = finddir("project.vim", ".;")
-        if projdir != ""
-            let b:project_directory = fnamemodify(projdir, ":p:h:h")
-            for f in split(glob(projdir . '/*.vim'), '\n')
-                exec 'source ' . fnameescape(f)
-            endfor
-            let b:project_loaded = 1
-        endif
-    endif
+  endif
 endfunction
 
 " ProjectCD - Change to the project directory
 " for some reason doing this in LoadProject() didn't work on Windows
 function! ProjectCD()
-    if exists("b:project_directory")
-        exec "cd " . fnameescape(b:project_directory)
-    endif
+  if exists("b:project_directory")
+    exec "cd " . fnameescape(b:project_directory)
+  endif
 endfunction
 
 function! FindSymbolInSources(sources, ...)
-    if a:0 > 0
-        let sym = a:1
-    else
-        let sym = expand("<cword>")
-    endif
-    exec 'vimgrep /\<' . sym . '\>/gj ' . a:sources
-    let n_matches = len(getqflist())
-    if n_matches == 0
-        cclose
-    else
-        redraw " the following echo will be lost without redrawing here
-        echo "Found " . n_matches . " matches"
-    endif
+  if a:0 > 0
+    let sym = a:1
+  else
+    let sym = expand("<cword>")
+  endif
+  exec 'vimgrep /\<' . sym . '\>/gj ' . a:sources
+  let n_matches = len(getqflist())
+  if n_matches == 0
+    cclose
+  else
+    redraw " the following echo will be lost without redrawing here
+    echo "Found " . n_matches . " matches"
+  endif
 endfunction
 
 " PtagSymbolBeforeParen - can be called from insert mode when the cursor
 " is anywhere within the parentheses of a function call in order to open
 " the called-function's prototype in the Preview window using :ptag
 function! PtagSymbolBeforeParen()
-    let l:line = getline(".")
-    let l:paren_pos = strridx(l:line, "(", col("."))
-    if l:paren_pos != -1
-        let l:line = strpart(l:line, 0, l:paren_pos)
+  let l:line = getline(".")
+  let l:paren_pos = strridx(l:line, "(", col("."))
+  if l:paren_pos != -1
+    let l:line = strpart(l:line, 0, l:paren_pos)
+  endif
+  let l:symidx = match(l:line, '\v[a-zA-Z_][a-zA-Z_0-9]*$')
+  if l:symidx != -1
+    let l:line = strpart(l:line, l:symidx)
+  endif
+  if &syntax == 'vim'
+    execute 'silent! help ' . l:line
+    if &filetype == 'help'
+      " we successfully opened the help window
+      execute "normal 1000\<C-w>-"
+      setlocal winheight=10
+      execute "normal \<C-w>\<C-w>"
+      startinsert
     endif
-    let l:symidx = match(l:line, '\v[a-zA-Z_][a-zA-Z_0-9]*$')
-    if l:symidx != -1
-        let l:line = strpart(l:line, l:symidx)
-    endif
-    if &syntax == 'vim'
-        execute 'silent! help ' . l:line
-        if &filetype == 'help'
-            " we successfully opened the help window
-            execute "normal 1000\<C-w>-"
-            setlocal winheight=10
-            execute "normal \<C-w>\<C-w>"
-            startinsert
-        endif
-    else
-        execute 'silent! ptag ' . l:line
-    endif
+  else
+    execute 'silent! ptag ' . l:line
+  endif
 endfunction
 
 function! Tedit()
@@ -252,5 +252,5 @@ command! Tedit call Tedit()
 " Machine-local Settings
 "==============================================================================
 if filereadable($MYVIMRC . ".local")
-    exec 'source ' . $MYVIMRC . ".local"
+  exec 'source ' . $MYVIMRC . ".local"
 endif

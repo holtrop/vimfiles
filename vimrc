@@ -232,6 +232,9 @@ endfunction
 command! -nargs=? Bf call FindSymbolInSources(b:project_sources . ' ' . b:test_sources, <f-args>)
 command! -nargs=? Cf call FindSymbolInSources(b:project_sources, <f-args>)
 command! -nargs=? Tf call FindSymbolInSources(b:test_sources, <f-args>)
+command! Cedit exec 'rightbelow vertical sfind ' . substitute(expand('%:t:r'), "test_", "", "") . '.c'
+command! CCedit exec 'rightbelow vertical sfind ' . substitute(expand('%:t:r'), "test_", "", "") . '.cc'
+command! Hedit exec 'rightbelow vertical sfind ' . expand('%:t:r') . '.h'
 
 "==============================================================================
 " Machine-local Settings

@@ -31,7 +31,7 @@ set wildmode=longest,list,full
 set splitright
 set showcmd
 set background=dark
-set cinoptions=:0,(0,g0
+set cinoptions=:0,g0
 set hidden
 
 runtime ftplugin/man.vim

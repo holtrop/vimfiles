@@ -3,6 +3,21 @@
 "==============================================================================
 let $MYVIMFILES=fnamemodify(resolve(expand("<sfile>")), ":p:h")
 set nocompatible
+
+"""
+""" Load Vundle
+"""
+
+filetype off
+set rtp+=~/.vim/Vundle.vim
+call vundle#begin()
+
+Plugin 'git://github.com/rust-lang/rust.vim.git'
+Plugin 'git://github.com/cespare/vim-toml.git'
+
+call vundle#end()
+"""
+
 syntax enable
 filetype plugin indent on
 set backspace=indent,eol,start

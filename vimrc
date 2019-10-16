@@ -103,15 +103,20 @@ nnoremap <Leader>j Ji<CR><Esc>
 nmap <Leader>f :call QNameFileInit(".", "", 1, "Build")<CR>:~
 nnoremap <C-N> :cnext<CR>
 nnoremap <C-P> :cprev<CR>
+nnoremap <C-Insert> "+y
+nnoremap <S-Insert> "+p
 
 vnoremap <C-J> <Esc>
 vnoremap < <gv
 vnoremap > >gv
+vnoremap <C-Insert> "+y
+vnoremap <S-Insert> "+p
 
 inoremap <silent> <C-Space> <C-o>:call PtagSymbolBeforeParen()<CR>
 inoremap <silent> <C-S-Space> <C-o>:pclose<CR>
 
 inoremap <C-Enter> <Esc>O
+inoremap <S-Insert> <C-o>"+p
 
 if has("autocmd")
   augroup joshs

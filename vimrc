@@ -130,7 +130,8 @@ if has("autocmd")
     autocmd BufRead,BufNewFile Rsconscript setf ruby
     " install glsl.vim in ~/.vim/syntax to use syntax highlighting for GLSL:
     autocmd BufRead,BufNewFile *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
-    autocmd Syntax {cpp,c,idl} runtime syntax/doxygen.vim
+    autocmd Syntax {cpp,c,idl,d} runtime syntax/doxygen.vim
+    autocmd Syntax {c,cpp,d} set formatoptions=croql
     autocmd QuickFixCmdPre grep copen
     autocmd QuickFixCmdPre vimgrep copen
     autocmd FileType html setlocal sw=2 ts=2 sts=2

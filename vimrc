@@ -116,7 +116,7 @@ inoremap <silent> <C-Space> <C-o>:call PtagSymbolBeforeParen()<CR>
 inoremap <silent> <C-S-Space> <C-o>:pclose<CR>
 
 inoremap <C-Enter> <Esc>O
-inoremap <S-Insert> <C-o>"+p
+inoremap <S-Insert> <C-o>"+P
 
 if has("autocmd")
   augroup joshs

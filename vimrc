@@ -1,7 +1,6 @@
 "==============================================================================
 " General Settings
 "==============================================================================
-let $MYVIMFILES=fnamemodify(resolve(expand("<sfile>")), ":p:h")
 set nocompatible
 
 syntax enable
@@ -15,10 +14,6 @@ set expandtab
 set softtabstop=4
 set ruler
 set showmatch
-"if has("persistent_undo")
-"    set undodir=$MYVIMFILES/undo
-"    set undofile
-"endif
 set mouse=a
 set hlsearch
 set incsearch
